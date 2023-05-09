@@ -1,0 +1,30 @@
+{
+  "name": "goit-js-hw-10",
+  "version": "2.0.0",
+  "description": "",
+ "homepage": "https://cosmits.github.io/goit-js-hw-10/",
+  "scripts": {
+    "start": "parcel src/*.html --open",
+    "build": "parcel build src/*.html --public-url /goit-js-hw-10/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cosmits/goit-js-hw-10.git"
+  },
+  "keywords": [],
+  "author": "Hennadii Samofal <salge.cos@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cosmits/goit-js-hw-10.git"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "parcel": "^2.8.3",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "posthtml-include": "^1.7.4"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
+}
