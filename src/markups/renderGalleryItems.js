@@ -14,9 +14,6 @@ function renderGalleryItems(data, refs) {
         </li>`
   ).join('');
 
-  // console.log(galleryItems);
-
-  // refs.bankList.insertAdjacentHTML('beforeend', bankItems.join(' '));
   refs.galleryDiv.innerHTML = galleryItems;
 
 }

@@ -4,21 +4,16 @@ import { refs } from '../models/data';
 import getImages from './getImages';
 import renderGalleryItems from '../markups/renderGalleryItems';
 
-// Описаний в документації
-import SimpleLightbox from "simplelightbox";
-
-
 async function onSubmitForm(event) {
 
   event.preventDefault();
 
   const str = event.target[0].value.trim();
-
   refs.searchForm.reset();
 
   if (!str) return;
 
-  const data = await getImages(str)
+  await getImages(str)
     .then(({ data: { hits, totalHits }, config: { params: { page } } }) => {
 
       if (!hits.length) {
@@ -28,11 +23,10 @@ async function onSubmitForm(event) {
 
       if (page === 1) Notify.success(`Hooray! We found ${totalHits} images.`);
 
+      refs.titleH1.textContent = str;
       renderGalleryItems(hits, refs);
 
-      refs.lightbox.refresh('changed.simplelightbox', function (e) {
-        console.log(e); // some usefull information
-      });
+      refs.lightbox.refresh('changed.simplelightbox');
       // console.log(page);
 
     })
@@ -41,6 +35,5 @@ async function onSubmitForm(event) {
   refs.searchForm.reset();
 
 }
-
 
 export default onSubmitForm;

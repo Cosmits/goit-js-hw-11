@@ -24,7 +24,7 @@ ul {
 /* search-form */
 .search-form {
   display: flex;
-  background-color: cornflowerblue;
+  background-color: #3F57B3;
   min-height: 45px;
   justify-content: center;
   flex-direction: row;
@@ -42,9 +42,10 @@ ul {
 
 .search-form button {
   border-radius: 6px;
-  height: 31px;
-  border: 1px solid rgb(101, 109, 118);
+  height: 29px;
+  border: 1px solid transparent;
   margin-left: -30px;
+  outline: none;
 }
 
 /* search-form */
@@ -60,6 +61,13 @@ ul {
   margin-left: auto;
   margin-right: auto;
 }
+
+.gallery__title {
+  margin: 0 auto;
+  text-align: center;
+  text-transform: capitalize;
+}
+
 
 .gallery__item {
   position: relative;
@@ -104,6 +112,5 @@ ul {
   text-align: center;
   color: #212121;
 }
-
 
 /* gallery */

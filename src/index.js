@@ -10,6 +10,10 @@ import renderSearchBtn from './markups/renderSearchBtn';
 
 renderSearchBtn(refs.SearchButton);
 
+const titleH1 = `<h1 class="gallery__title"></h1>`;
+refs.galleryDiv.insertAdjacentHTML('beforebegin', titleH1);
+refs.titleH1 = document.querySelector('.gallery__title');
+
 refs.searchForm.addEventListener("submit", onSubmitForm);
 
 // Initialize SimpleLightbox
