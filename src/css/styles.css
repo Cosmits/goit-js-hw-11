@@ -54,6 +54,7 @@ ul {
 .gallery {
   display: grid;
   max-width: 1140px;
+  padding: 0 1vw;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-auto-rows: 240px;
   grid-gap: 12px;
