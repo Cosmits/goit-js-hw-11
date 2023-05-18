@@ -3,7 +3,7 @@ import { URL_API, API_key } from '../models/data'
 
 async function getImages(searchQuery, page = 1) {
 
-  return await axios({
+  return axios({
     method: `GET`,
     url: `${URL_API}`,
     headers: {

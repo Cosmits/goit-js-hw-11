@@ -12,6 +12,10 @@ import renderSearchBtn from './markups/renderSearchBtn';
 import renderGalleryTitle from './markups/renderGalleryTitle';
 
 import debounce from 'lodash.debounce';
+import OnlyScroll from 'only-scrollbar';
+
+//* OnlyScroll
+const scroll = new OnlyScroll(document.scrollingElement);
 
 //* Render
 renderSearchBtn(refs.SearchButton);
@@ -19,7 +23,18 @@ renderGalleryTitle(refs);
 
 //* Listener
 refs.searchForm.addEventListener("submit", onSubmitForm);
-window.addEventListener("scroll", debounce(getPagesLoader, 50));
+
+//! Infinite scroll
+function handleScroll() {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  if (scrollTop + clientHeight >= scrollHeight - 200) {
+    getPagesLoader();
+  }
+}
+window.addEventListener("scroll", handleScroll);
+
+//! Normal scroll
+//window.addEventListener("scroll", debounce(getPagesLoader, 50));
 
 //* Initialize SimpleLightbox
 const lightbox = new SimpleLightbox(".gallery a", {
