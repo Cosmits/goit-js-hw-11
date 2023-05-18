@@ -6,17 +6,22 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import './css/styles.css';
 import { refs } from './models/data';
 import onSubmitForm from './services/onSubmitForm'
+import getPagesLoader from './services/getPagesLoader'
+
 import renderSearchBtn from './markups/renderSearchBtn';
+import renderGalleryTitle from './markups/renderGalleryTitle';
 
+import debounce from 'lodash.debounce';
+
+//* Render
 renderSearchBtn(refs.SearchButton);
+renderGalleryTitle(refs);
 
-const titleH1 = `<h1 class="gallery__title"></h1>`;
-refs.galleryDiv.insertAdjacentHTML('beforebegin', titleH1);
-refs.titleH1 = document.querySelector('.gallery__title');
-
+//* Listener
 refs.searchForm.addEventListener("submit", onSubmitForm);
+window.addEventListener("scroll", debounce(getPagesLoader, DEBOUNCE_DELAY = 50));
 
-// Initialize SimpleLightbox
+//* Initialize SimpleLightbox
 const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
