@@ -1,4 +1,4 @@
-function renderGalleryItems(data, refs) {
+function renderGalleryItems(data, galleryDiv, page) {
   const galleryItems = data.map(
     card => `
         <li class='gallery__item' data-id="${card.id}">
@@ -14,7 +14,8 @@ function renderGalleryItems(data, refs) {
         </li>`
   ).join('');
 
-  refs.galleryDiv.innerHTML = galleryItems;
+  if (page === 1) galleryDiv.innerHTML = galleryItems
+  else galleryDiv.insertAdjacentHTML('beforeend', galleryItems);
 
 }
 

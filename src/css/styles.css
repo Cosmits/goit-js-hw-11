@@ -62,7 +62,8 @@ ul {
   margin-right: auto;
 }
 
-.gallery__title {
+.gallery__title,
+.gallery__title__the__end {
   margin: 0 auto;
   text-align: center;
   text-transform: capitalize;

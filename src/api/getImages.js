@@ -18,7 +18,7 @@ async function getImages(searchQuery, page = 1) {
       image_type: `photo`,
       orientation: `horizontal`,
       safesearch: true,
-      per_page: 9, //40
+      per_page: 40,
       page: +`${page}`,
 
     },
