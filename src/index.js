@@ -19,7 +19,7 @@ renderGalleryTitle(refs);
 
 //* Listener
 refs.searchForm.addEventListener("submit", onSubmitForm);
-window.addEventListener("scroll", debounce(getPagesLoader, DEBOUNCE_DELAY = 50));
+window.addEventListener("scroll", debounce(getPagesLoader, 50));
 
 //* Initialize SimpleLightbox
 const lightbox = new SimpleLightbox(".gallery a", {
