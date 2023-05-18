@@ -4,10 +4,14 @@ import { refs, anySearchParam } from '../models/data';
 import getImages from '../api/getImages';
 import renderGalleryItems from '../markups/renderGalleryItems';
 
-const changeTitleH1 = str => (refs.titleH1.textContent = str);
+const changeTitleH1 = (str, totalHits) => {
+  refs.titleH1.textContent = str;
+  refs.titleH1.insertAdjacentHTML('beforeend', `<sup style="font-size: initial;">  ${totalHits} img</sup>`)
+};
+
 const changeTitleH1TheEnd = str => (refs.titleH1TheEnd.textContent = str);
 
-async function onSubmitForm(event) {
+function onSubmitForm(event) {
 
   event.preventDefault();
 
@@ -17,7 +21,7 @@ async function onSubmitForm(event) {
 
   if (!str) return;
 
-  await getImages(str)
+  getImages(str)
     .then(({ data: { hits, totalHits }, config: { params: { page } } }) => {
 
       if (!hits.length) throw new Error(`Sorry, there are no images matching your search query. Please try again.`);
@@ -26,8 +30,8 @@ async function onSubmitForm(event) {
       anySearchParam.currentPage = page;
       anySearchParam.currentQuery = str;
 
-      changeTitleH1(str);
-      
+      changeTitleH1(str, totalHits);
+
       renderGalleryItems(hits, refs.galleryDiv, page);
 
       refs.lightbox.refresh('changed.simplelightbox');
@@ -35,7 +39,7 @@ async function onSubmitForm(event) {
       if (hits.length < 40) {
         anySearchParam.isDone = true;
         changeTitleH1TheEnd('The End');
-      } else { 
+      } else {
         anySearchParam.isDone = false;
         changeTitleH1TheEnd('');
       }

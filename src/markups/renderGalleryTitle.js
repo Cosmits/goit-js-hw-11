@@ -8,7 +8,6 @@ function renderGalleryTitle(refs) {
   refs.galleryDiv.insertAdjacentHTML('afterend', titleH1TheEnd);
   refs.titleH1TheEnd = document.querySelector('.gallery__title__the__end');
 
-
 }
 
 export default renderGalleryTitle;

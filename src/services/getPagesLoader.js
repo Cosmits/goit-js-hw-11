@@ -6,16 +6,17 @@ import { refs, anySearchParam } from '../models/data';
 import getImages from '../api/getImages';
 import renderGalleryItems from '../markups/renderGalleryItems';
 
-async function getPagesLoader(event) {
+const changeTitleH1TheEnd = str => (refs.titleH1TheEnd.textContent = str);
+
+function getPagesLoader(event) {
 
   const { currentQuery: str, currentPage: page, isDone: isDone } = anySearchParam;
-  const changeTitleH1TheEnd = str => (refs.titleH1TheEnd.textContent = str);
 
   // console.log(event);
 
   if (isDone) return;
 
-  await getImages(str, page + 1)
+  getImages(str, page + 1)
     .then(({ data: { hits, totalHits }, config: { params: { page } } }) => {
 
       if (!hits.length) {
