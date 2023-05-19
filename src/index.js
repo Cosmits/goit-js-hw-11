@@ -4,7 +4,7 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 import './css/styles.css';
-import { refs } from './models/data';
+import { anySearchParam, refs } from './models/data';
 import onSubmitForm from './services/onSubmitForm'
 import getPagesLoader from './services/getPagesLoader'
 
@@ -24,17 +24,17 @@ renderGalleryTitle(refs);
 //* Listener
 refs.searchForm.addEventListener("submit", onSubmitForm);
 
-//! Infinite scroll
-function handleScroll() {
+//! Infinite scroll - have a problem with trotline
+async function handleScroll() {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  if (scrollTop + clientHeight >= scrollHeight - 200) {
-    getPagesLoader();
+  if (scrollTop + clientHeight >= scrollHeight - (200 * anySearchParam.currentPage)) {
+    await getPagesLoader();
   }
 }
-window.addEventListener("scroll", handleScroll);
+window.addEventListener("scroll", debounce(handleScroll, 50));
 
 //! Normal scroll
-//window.addEventListener("scroll", debounce(getPagesLoader, 50));
+// window.addEventListener("scroll", debounce(getPagesLoader, 50));
 
 //* Initialize SimpleLightbox
 const lightbox = new SimpleLightbox(".gallery a", {
