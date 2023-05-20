@@ -25,16 +25,32 @@ renderGalleryTitle(refs);
 refs.searchForm.addEventListener("submit", onSubmitForm);
 
 //! Infinite scroll - have a problem with trotline
-async function handleScroll() {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  if (scrollTop + clientHeight >= scrollHeight - (200 * anySearchParam.currentPage)) {
-    await getPagesLoader();
-  }
-}
-window.addEventListener("scroll", debounce(handleScroll, 50));
+// async function handleScroll() {
+//   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+//   if (scrollTop + clientHeight >= scrollHeight - (200 * anySearchParam.currentPage)) {
+//     await getPagesLoader();
+//   }
+// }
+// window.addEventListener("scroll", debounce(handleScroll, 50));
 
 //! Normal scroll
 // window.addEventListener("scroll", debounce(getPagesLoader, 50));
+
+//! Infinite scroll - intersectionObserver
+const optionsObserver = {
+  rootMargin: '500px',
+  threshold: 0.1,
+};
+
+const callbackObserver = entries => {
+  if (entries[0].isIntersecting && !!anySearchParam.currentQuery && !anySearchParam.isDone) {
+    getPagesLoader();
+  }
+};
+
+const intersectionObserver = new IntersectionObserver(callbackObserver, optionsObserver);
+// start observing
+intersectionObserver.observe(refs.titleH1TheEnd);
 
 //* Initialize SimpleLightbox
 const lightbox = new SimpleLightbox(".gallery a", {
