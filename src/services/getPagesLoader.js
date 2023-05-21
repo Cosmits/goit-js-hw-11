@@ -19,7 +19,7 @@ function getPagesLoader(event) {
   getImages(str, page + 1)
     .then(({ data: { hits, totalHits }, config: { params: { page } } }) => {
 
-      if (!hits.length) {
+      if (!hits.length || hits.length < (page - 1) * 40) {
         anySearchParam.isDone = true;
         changeTitleH1TheEnd('The End');
         throw new Error(`All ${totalHits} was loaded successfully`);
