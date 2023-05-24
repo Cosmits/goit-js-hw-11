@@ -3,8 +3,8 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { refs, anySearchParam } from '../models/data';
-import getImages from '../api/getImages';
-import renderGalleryItems from '../markups/renderGalleryItems';
+import getImages from '../api/get_images';
+import renderGalleryItems from '../markups/render_gallery_items';
 
 const changeTitleH1TheEnd = str => (refs.titleH1TheEnd.textContent = str);
 

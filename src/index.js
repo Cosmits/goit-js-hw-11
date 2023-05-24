@@ -5,11 +5,11 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 import './css/styles.css';
 import { anySearchParam, refs } from './models/data';
-import onSubmitForm from './services/onSubmitForm'
-import getPagesLoader from './services/getPagesLoader'
+import onSubmitForm from './services/on_submit_form'
+import getPagesLoader from './services/get_pages_loader'
 
-import renderSearchBtn from './markups/renderSearchBtn';
-import renderGalleryTitle from './markups/renderGalleryTitle';
+import renderSearchBtn from './markups/render_search_btn';
+import renderGalleryTitle from './markups/render_gallery_title';
 
 import debounce from 'lodash.debounce';
 import OnlyScroll from 'only-scrollbar';
