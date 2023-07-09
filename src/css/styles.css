@@ -38,6 +38,7 @@ ul {
   width: 35vw;
   outline: none;
   border: 1px solid rgb(101, 109, 118);
+  padding-left: 12px;
 }
 
 .search-form button {
